@@ -1,6 +1,7 @@
 var express=require("express");
 var path=require("path");
 var app=express();
+require("dotenv").config();
 var session=require("express-session");
 app.use(express.urlencoded({extended:true}));
 app.use(session({
@@ -9,7 +10,6 @@ app.use(session({
     saveUninitialized: true
 }));
 var usuariosRutas=require("./rutas/usuarios");
-require("dotenv").config();
 app.set("view engine","ejs");
 app.use("/web",express.static(path.join(__dirname,"/web")));
 app.use("/",usuariosRutas);
